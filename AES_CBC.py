@@ -177,13 +177,11 @@ import base64
 # Invcx=np.array([[0x0e,0x0b,0x0d,0x09],[0x09,0x0e,0x0b,0x0d],[0x0d,0x09,0x0e,0x0b],[0x0b,0x0d,0x09,0x0e]])
 
 
-# key = 'yTwsk9MvRJhc5wRN'
-# iv = 'rEIZ5M4JcAL4Tz8F'
-# plain = 'nQvY8cL0eQiaoMuK/tFpQL9yknxgL9Zb1snvST8/t+s='
-# key = 'nHwsk9MvRJhc5wRN'
-# iv = 'wjIZ5M4JcAL4Tz8F'
+
+# key = '1234567890123456'
+# iv = '1234567890123456'
 #
-# data = {"quota":20,"id":64,"userId":1}
+
 #
 #
 # plain = json.dumps(data).replace(' ','')
@@ -239,9 +237,9 @@ class AESCBC:
 
     def __init__(self, key=None, iv=None):
         if not key:
-            key = 'nHwsk9MvRJhc5wRN'
+            key = '1234567890123456'
         if not iv:
-            iv = 'wjIZ5M4JcAL4Tz8F'
+            iv = '1234567890123456'
         self.key = key
         self.iv = iv
 
@@ -397,7 +395,7 @@ class AESCBC:
 
 aes = AESCBC()
 
-plain = 'nQvY8cL0eQiaoMuK/tFpQL9yknxgL9Zb1snvST8/t+s='
+plain = aes.EN_AES('hello test')
 
 print(aes.DE_AES(plain.encode()))
 
@@ -405,3 +403,5 @@ raw = "{'a':1,'b':2}"
 
 print(aes.EN_AES(raw))
 print(aes.DE_AES(aes.EN_AES(raw)))
+
+
